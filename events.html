@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="CloudConnect Events - Workshops, hackathons and cloud technology events.">
+
+    <title>Events | CloudConnect</title>
+
+    <!-- Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="css/responsive.css">
+
+
+    <style>
+        /* ================= EVENTS PAGE ================= */
+        
+        .events-page {
+            padding: 140px 25px 90px;
+            min-height: 100vh;
+        }
+        
+        .events-page-container {
+            max-width: 1200px;
+            margin: auto;
+        }
+        
+        .events-hero {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 50px;
+        }
+        
+        .events-hero h1 {
+            font-family: "Poppins", sans-serif;
+            font-size: clamp(38px, 5vw, 58px);
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+        
+        .events-hero h1 span {
+            color: var(--primary);
+        }
+        
+        .events-hero p {
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        /* Filters */
+        
+        .event-filters {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .event-search {
+            position: relative;
+            width: 300px;
+        }
+        
+        .event-search i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+        
+        .event-search input,
+        .category-select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--surface);
+            color: var(--text);
+            outline: none;
+            font-family: inherit;
+            font-size: 12px;
+        }
+        
+        .event-search input {
+            padding-left: 40px;
+        }
+        
+        .event-search input:focus,
+        .category-select:focus {
+            border-color: var(--primary);
+        }
+        
+        .category-select {
+            width: 160px;
+            cursor: pointer;
+        }
+        /* Event Grid */
+        
+        #eventsContainer {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .event-page-card {
+            position: relative;
+            min-height: 360px;
+            padding: 25px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            transition: .3s ease;
+        }
+        
+        .event-page-card:hover {
+            transform: translateY(-7px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(255, 153, 0, .35);
+        }
+        
+        .event-page-icon {
+            width: 58px;
+            height: 58px;
+            display: grid;
+            place-items: center;
+            border-radius: 15px;
+            background: rgba(255, 153, 0, .1);
+            color: var(--primary);
+            font-size: 24px;
+            margin-bottom: 22px;
+        }
+        
+        .event-page-card h3 {
+            font-family: "Poppins", sans-serif;
+            font-size: 19px;
+            margin: 8px 0 10px;
+        }
+        
+        .event-page-card p {
+            color: var(--text-light);
+            font-size: 12px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .event-details {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            color: var(--text-light);
+            font-size: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .event-details i {
+            width: 18px;
+            color: var(--primary);
+        }
+        
+        .event-register-btn {
+            position: absolute;
+            left: 25px;
+            right: 25px;
+            bottom: 22px;
+            padding: 12px;
+            border: 0;
+            border-radius: 9px;
+            background: var(--dark);
+            color: white;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 11px;
+            font-weight: 700;
+            transition: .3s ease;
+        }
+        
+        .event-register-btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        body.dark-mode .event-register-btn {
+            background: var(--primary);
+            color: #111827;
+        }
+        
+        .no-events {
+            grid-column: 1 / -1;
+            padding: 70px 20px;
+            text-align: center;
+            color: var(--text-light);
+        }
+        
+        .no-events i {
+            font-size: 45px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .no-events h3 {
+            color: var(--text);
+            font-family: "Poppins", sans-serif;
+            margin-bottom: 5px;
+        }
+        /* Responsive */
+        
+        @media (max-width: 950px) {
+            #eventsContainer {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .events-page {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            #eventsContainer {
+                grid-template-columns: 1fr;
+            }
+            .event-search {
+                width: 100%;
+            }
+            .category-select {
+                width: 100%;
+            }
+            .event-filters {
+                align-items: stretch;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+
+                <span class="logo-icon">
+                    <i class="fa-solid fa-cloud"></i>
+                </span>
+
+                <span>
+                    Cloud<span class="logo-highlight">Connect</span>
+                </span>
+
+            </a>
+
+
+            <nav class="nav-menu">
+
+                <a href="index.html" class="nav-link">
+                    Home
+                </a>
+
+                <a href="events.html" class="nav-link active">
+                    Events
+                </a>
+
+                <a href="register.html" class="nav-link">
+                    Register
+                </a>
+
+                <a href="dashboard.html" class="nav-link">
+                    Dashboard
+                </a>
+
+            </nav>
+
+
+            <div class="nav-actions">
+
+                <button class="theme-btn" id="themeToggle">
+
+                    <i class="fa-solid fa-moon"></i>
+
+                </button>
+
+                <a href="register.html" class="nav-register">
+
+                    Join Community
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= EVENTS ================= -->
+
+    <main class="events-page">
+
+        <div class="events-page-container">
+
+
+            <section class="events-hero">
+
+                <span class="section-tag">
+                    LEARN • BUILD • CONNECT
+                </span>
+
+                <h1>
+                    Upcoming
+                    <span>Events</span>
+                </h1>
+
+                <p>
+                    Join workshops, hackathons, technical talks and community events designed to help you build practical technology skills.
+                </p>
+
+            </section>
+
+
+            <!-- ================= FILTERS ================= -->
+
+            <div class="event-filters">
+
+                <div class="event-search">
+
+                    <i class="fa-solid fa-search"></i>
+
+                    <input type="search" id="eventSearch" placeholder="Search events...">
+
+                </div>
+
+
+                <select id="categoryFilter" class="category-select">
+
+                    <option value="All">
+                        All Categories
+                    </option>
+
+                    <option value="Workshop">
+                        Workshop
+                    </option>
+
+                    <option value="Hackathon">
+                        Hackathon
+                    </option>
+
+                    <option value="Tech Talk">
+                        Tech Talk
+                    </option>
+
+                    <option value="Community">
+                        Community
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- ================= EVENTS CONTAINER ================= -->
+
+            <section id="eventsContainer">
+
+                <!-- events.js inserts events here -->
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= JS ================= -->
+
+    <script src="js/app.js"></script>
+
+    <script src="js/events.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Join CloudConnect AWS Student Community">
+
+    <title>Register | CloudConnect</title>
+
+    <!-- Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="css/responsive.css">
+
+
+    <style>
+        /* ================= REGISTER PAGE ================= */
+        
+        .register-page {
+            min-height: 100vh;
+            padding: 130px 25px 80px;
+            background: radial-gradient( circle at 10% 20%, rgba(37, 99, 235, .07), transparent 30%), radial-gradient( circle at 90% 80%, rgba(255, 153, 0, .08), transparent 30%);
+        }
+        
+        .register-container {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: .75fr 1.25fr;
+            gap: 25px;
+            align-items: stretch;
+        }
+        /* ================= INFO PANEL ================= */
+        
+        .register-info {
+            padding: 40px;
+            border-radius: 22px;
+            background: linear-gradient( 145deg, #08101f, #142238);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .register-info::before {
+            content: "";
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: rgba(255, 153, 0, .12);
+            right: -100px;
+            top: -100px;
+        }
+        
+        .register-info::after {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 1px dashed rgba(255, 153, 0, .3);
+            right: -40px;
+            bottom: -30px;
+        }
+        
+        .register-logo {
+            width: 55px;
+            height: 55px;
+            display: grid;
+            place-items: center;
+            border-radius: 15px;
+            background: linear-gradient( 135deg, var(--primary), #f97316);
+            font-size: 23px;
+            margin-bottom: 30px;
+        }
+        
+        .register-info h1 {
+            font-family: "Poppins", sans-serif;
+            font-size: clamp(30px, 4vw, 45px);
+            line-height: 1.1;
+            margin-bottom: 18px;
+        }
+        
+        .register-info h1 span {
+            color: var(--primary);
+        }
+        
+        .register-info>p {
+            color: #a9b5c7;
+            font-size: 13px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .benefits {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .benefit {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .benefit-icon {
+            flex-shrink: 0;
+            width: 34px;
+            height: 34px;
+            display: grid;
+            place-items: center;
+            border-radius: 9px;
+            background: rgba(255, 153, 0, .12);
+            color: var(--primary);
+            font-size: 13px;
+        }
+        
+        .benefit strong {
+            display: block;
+            font-size: 12px;
+            margin-bottom: 2px;
+        }
+        
+        .benefit span {
+            color: #8491a5;
+            font-size: 10px;
+        }
+        /* ================= FORM ================= */
+        
+        .register-form-container {
+            padding: 38px;
+            border-radius: 22px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .form-heading {
+            margin-bottom: 28px;
+        }
+        
+        .form-heading h2 {
+            font-family: "Poppins", sans-serif;
+            font-size: 25px;
+            margin-bottom: 5px;
+        }
+        
+        .form-heading p {
+            color: var(--text-light);
+            font-size: 11px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+        
+        .form-group label {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--text);
+        }
+        
+        .required {
+            color: #ef4444;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 13px;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            background: var(--background);
+            color: var(--text);
+            outline: none;
+            font-family: inherit;
+            font-size: 11px;
+            transition: .3s ease;
+        }
+        
+        .form-group textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 153, 0, .08);
+        }
+        
+        .input-with-icon {
+            position: relative;
+        }
+        
+        .input-with-icon i {
+            position: absolute;
+            left: 13px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            font-size: 11px;
+        }
+        
+        .input-with-icon input {
+            padding-left: 36px;
+        }
+        
+        .form-note {
+            color: var(--text-light);
+            font-size: 9px;
+            margin-top: 3px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            margin-top: 22px;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient( 135deg, var(--primary), #f97316);
+            color: white;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: .3s ease;
+            box-shadow: 0 10px 25px rgba(255, 153, 0, .18);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(255, 153, 0, .25);
+        }
+        /* ================= MESSAGES ================= */
+        
+        .form-message {
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border-radius: 9px;
+            font-size: 11px;
+        }
+        
+        .form-message.error {
+            background: rgba(239, 68, 68, .08);
+            color: #dc2626;
+            border: 1px solid rgba(239, 68, 68, .2);
+        }
+        
+        .success-message {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 18px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            background: rgba(34, 197, 94, .08);
+            border: 1px solid rgba(34, 197, 94, .2);
+        }
+        
+        .success-icon {
+            width: 38px;
+            height: 38px;
+            flex-shrink: 0;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: #22c55e;
+            color: white;
+        }
+        
+        .success-message h3 {
+            color: #16a34a;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+        
+        .success-message p,
+        .success-message span {
+            color: var(--text-light);
+            font-size: 10px;
+        }
+        
+        .success-message strong {
+            color: var(--text);
+        }
+        /* ================= RESPONSIVE ================= */
+        
+        @media (max-width: 850px) {
+            .register-container {
+                grid-template-columns: 1fr;
+            }
+            .register-info {
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 550px) {
+            .register-page {
+                padding: 110px 15px 50px;
+            }
+            .register-form-container {
+                padding: 25px 20px;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-group.full {
+                grid-column: auto;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+
+                <span class="logo-icon">
+
+                    <i class="fa-solid fa-cloud"></i>
+
+                </span>
+
+                <span>
+
+                    Cloud<span class="logo-highlight">
+                        Connect
+                    </span>
+
+                </span>
+
+            </a>
+
+
+            <nav class="nav-menu">
+
+                <a href="index.html" class="nav-link">
+
+                    Home
+
+                </a>
+
+                <a href="events.html" class="nav-link">
+
+                    Events
+
+                </a>
+
+                <a href="register.html" class="nav-link active">
+
+                    Register
+
+                </a>
+
+                <a href="dashboard.html" class="nav-link">
+
+                    Dashboard
+
+                </a>
+
+            </nav>
+
+
+            <div class="nav-actions">
+
+                <button class="theme-btn" id="themeToggle">
+
+                    <i class="fa-solid fa-moon"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= REGISTER ================= -->
+
+    <main class="register-page">
+
+        <div class="register-container">
+
+
+            <!-- ================= INFO ================= -->
+
+            <section class="register-info">
+
+                <div class="register-logo">
+
+                    <i class="fa-solid fa-cloud"></i>
+
+                </div>
+
+
+                <span class="section-tag">
+                    CLOUDCONNECT COMMUNITY
+                </span>
+
+
+                <h1>
+
+                    Build your
+                    <span>future</span> in the cloud.
+
+                </h1>
+
+
+                <p>
+
+                    Join a community of student developers learning cloud technologies, building projects and exploring new opportunities.
+
+                </p>
+
+
+                <div class="benefits">
+
+
+                    <div class="benefit">
+
+                        <div class="benefit-icon">
+
+                            <i class="fa-solid fa-graduation-cap"></i>
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Learn Cloud Technologies
+                            </strong>
+
+                            <span>
+                                Practical workshops and technical sessions.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="benefit">
+
+                        <div class="benefit-icon">
+
+                            <i class="fa-solid fa-code"></i>
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Build Real Projects
+                            </strong>
+
+                            <span>
+                                Turn your ideas into portfolio projects.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="benefit">
+
+                        <div class="benefit-icon">
+
+                            <i class="fa-solid fa-users"></i>
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Meet Developers
+                            </strong>
+
+                            <span>
+                                Connect and collaborate with students.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="benefit">
+
+                        <div class="benefit-icon">
+
+                            <i class="fa-solid fa-certificate"></i>
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Grow Your Profile
+                            </strong>
+
+                            <span>
+                                Participate in events and earn experience.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= FORM ================= -->
+
+            <section class="register-form-container">
+
+                <div class="form-heading">
+
+                    <span class="section-tag">
+                        STUDENT REGISTRATION
+                    </span>
+
+                    <h2>
+                        Join CloudConnect
+                    </h2>
+
+                    <p>
+                        Fill in your details to become a community member.
+                    </p>
+
+                </div>
+
+
+                <form id="registrationForm">
+
+
+                    <div class="form-grid">
+
+
+                        <!-- Full Name -->
+
+                        <div class="form-group full">
+
+                            <label for="fullName">
+
+                                Full Name
+                                <span class="required">*</span>
+
+                            </label>
+
+                            <div class="input-with-icon">
+
+                                <i class="fa-solid fa-user"></i>
+
+                                <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" autocomplete="name" required>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Email -->
+
+                        <div class="form-group">
+
+                            <label for="email">
+
+                                Email Address
+                                <span class="required">*</span>
+
+                            </label>
+
+                            <div class="input-with-icon">
+
+                                <i class="fa-solid fa-envelope"></i>
+
+                                <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Phone -->
+
+                        <div class="form-group">
+
+                            <label for="phone">
+
+                                Phone Number
+                                <span class="required">*</span>
+
+                            </label>
+
+                            <div class="input-with-icon">
+
+                                <i class="fa-solid fa-phone"></i>
+
+                                <input type="tel" id="phone" name="phone" placeholder="Enter phone number" autocomplete="tel" required>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- College -->
+
+                        <div class="form-group full">
+
+                            <label for="college">
+
+                                College / University
+                                <span class="required">*</span>
+
+                            </label>
+
+                            <div class="input-with-icon">
+
+                                <i class="fa-solid fa-building-columns"></i>
+
+                                <input type="text" id="college" name="college" placeholder="Enter your college name" required>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Course -->
+
+                        <div class="form-group">
+
+                            <label for="course">
+
+                                Course
+                                <span class="required">*</span>
+
+                            </label>
+
+                            <select id="course" name="course" required>
+
+                                <option value="">
+                                    Select course
+                                </option>
+
+                                <option value="Computer Science">
+                                    Computer Science
+                                </option>
+
+                                <option value="Information Technology">
+                                    Information Technology
+                                </option>
+
+                                <option value="Artificial Intelligence">
+                                    Artificial Intelligence
+                                </option>
+
+                                <option value="Data Science">
+                                    Data Science
+                                </option>
+
+                                <option value="Electronics">
+                                    Electronics
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- Year -->
+
+                        <div class="form-group">
+
+                            <label for="year">
+
+                                Academic Year
+                                <span class="required">*</span>
+
+                            </label>
+
+                            <select id="year" name="year" required>
+
+                                <option value="">
+                                    Select year
+                                </option>
+
+                                <option value="1st Year">
+                                    1st Year
+                                </option>
+
+                                <option value="2nd Year">
+                                    2nd Year
+                                </option>
+
+                                <option value="3rd Year">
+                                    3rd Year
+                                </option>
+
+                                <option value="4th Year">
+                                    4th Year
+                                </option>
+
+                                <option value="Postgraduate">
+                                    Postgraduate
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- Skills -->
+
+                        <div class="form-group full">
+
+                            <label for="skills">
+
+                                Technical Skills
+
+                            </label>
+
+                            <textarea id="skills" name="skills" placeholder="Example: HTML, CSS, JavaScript, Python, AWS..."></textarea>
+
+                            <span class="form-note">
+                                Mention technologies you are familiar with.
+                            </span>
+
+                        </div>
+
+
+                        <!-- GitHub -->
+
+                        <div class="form-group">
+
+                            <label for="github">
+
+                                GitHub Profile
+
+                            </label>
+
+                            <div class="input-with-icon">
+
+                                <i class="fa-brands fa-github"></i>
+
+                                <input type="url" id="github" name="github" placeholder="https://github.com/...">
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- LinkedIn -->
+
+                        <div class="form-group">
+
+                            <label for="linkedin">
+
+                                LinkedIn Profile
+
+                            </label>
+
+                            <div class="input-with-icon">
+
+                                <i class="fa-brands fa-linkedin"></i>
+
+                                <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/...">
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- Submit -->
+
+                    <button type="submit" class="submit-btn">
+
+                        <i class="fa-solid fa-user-plus"></i>
+
+                        Join CloudConnect
+
+                    </button>
+
+
+                    <p class="form-note" style="text-align:center; margin-top:12px;">
+
+                        Your information is stored locally in this browser for this demo project.
+
+                    </p>
+
+
+                </form>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="js/app.js"></script>
+
+    <script src="js/register.js"></script>
+
+</body>
+
+</html>

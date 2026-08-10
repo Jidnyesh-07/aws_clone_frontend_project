@@ -1,0 +1,41 @@
+<svg width="256" height="256" viewBox="0 0 256 256"
+     xmlns="http://www.w3.org/2000/svg">
+
+    <defs>
+        <linearGradient id="cloudGradient"
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="100%">
+
+            <stop offset="0%" stop-color="#2563eb"/>
+            <stop offset="100%" stop-color="#60a5fa"/>
+
+        </linearGradient>
+    </defs>
+
+    <path
+        d="M184 192H72
+           C42 192 20 170 20 142
+           C20 115 40 94 66 91
+           C72 55 103 32 139 32
+           C178 32 210 60 216 97
+           C228 105 236 119 236 136
+           C236 167 212 192 184 192Z"
+
+        fill="url(#cloudGradient)"
+    />
+
+    <path
+        d="M91 137
+           L119 165
+           L172 105"
+
+        fill="none"
+        stroke="#ffffff"
+        stroke-width="16"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+    />
+
+</svg>
